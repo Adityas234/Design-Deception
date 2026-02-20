@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Design Deception",
+  "version": "1.0",
+
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs"
+  ],
+
+  "host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "action": {
+    "default_popup": "popup.html"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "engines/visualEngine.js",
+        "engines/semanticEngine.js",
+        "engines/effortEngine.js",
+        "engines/defaultEngine.js",
+        "engines/pressureEngine.js",
+        "engines/dpiEngine.js",
+        "content-script.js"
+      ],
+      "all_frames": true
+    }
+  ]
+}

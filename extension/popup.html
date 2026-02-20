@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>DPD</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+
+  <div class="header">
+    <div class="logo-icon">★</div>
+    <div>
+      <div class="title">Design Deception</div>
+      <div class="subtitle">Dark Pattern Detector</div>
+    </div>
+  </div>
+
+  <div class="score-section">
+    <div id="scoreNumber" class="score-number">0</div>
+    <div class="score-label">Transparency Score</div>
+    <span id="riskBadge" class="risk-badge low">LOW</span>
+  </div>
+
+  <div id="summaryBox" class="alert-box">
+    Loading analysis...
+  </div>
+
+  <div class="section-title">Detected Issues</div>
+  <div id="issues"></div>
+
+  <div class="section-title">Pattern Type</div>
+  <div id="patternType"></div>
+
+  <button id="toggleAdvanced" class="button secondary">
+    View Technical Details
+  </button>
+
+  <div id="advanced" class="advanced">
+    <div class="section-title">Signal Breakdown</div>
+    <div id="breakdown"></div>
+  </div>
+
+  <button id="ignoreSite" class="button secondary">
+    Ignore for this site
+  </button>
+
+  <button id="disableDetection" class="button primary">
+    Turn off detection
+  </button>
+
+  <div id="confidence" class="footer-note"></div>
+
+</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+body {
+  margin: 0;
+  width: 380px;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0f0c1a;
+  color: #f3f4f6;
+}
+
+.container {
+  margin: 12px;
+  padding: 20px;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #1b132d, #120a22);
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(168,85,247,0.15);
+}
+
+/* HEADER */
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.logo-icon {
+  width: 30px;
+  height: 30px;
+  background: #a855f7;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #0f0c1a;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 11px;
+  color: #a78bfa;
+}
+
+/* TRANSPARENCY SCORE */
+
+.score-section {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.score-number {
+  font-size: 42px;
+  font-weight: 700;
+  color: #c084fc;
+}
+
+.score-label {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.risk-badge {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.low { background: rgba(34,197,94,0.15); color: #22c55e; }
+.moderate { background: rgba(245,158,11,0.15); color: #f59e0b; }
+.high { background: rgba(239,68,68,0.15); color: #ef4444; }
+
+/* ALERT */
+
+.alert-box {
+  background: rgba(168,85,247,0.1);
+  border: 1px solid rgba(168,85,247,0.4);
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+/* SECTIONS */
+
+.section-title {
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  color: #c4b5fd;
+}
+
+.issue-item {
+  font-size: 12px;
+  margin-bottom: 6px;
+  color: #e5e7eb;
+}
+
+/* CHIPS */
+
+.pattern-chip {
+  display: inline-block;
+  background: #2a1c45;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  margin-right: 6px;
+  margin-bottom: 6px;
+  color: #e9d5ff;
+}
+
+/* BUTTONS */
+
+.button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  margin-top: 10px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.secondary {
+  background: #1e1433;
+  color: #e5e7eb;
+  border: 1px solid rgba(168,85,247,0.2);
+}
+
+.secondary:hover {
+  background: #261a42;
+}
+
+.primary {
+  background: linear-gradient(90deg, #a855f7, #7c3aed);
+  color: white;
+}
+
+.primary:hover {
+  opacity: 0.9;
+}
+
+/* ADVANCED */
+
+.advanced {
+  display: none;
+  margin-top: 12px;
+}
+
+.signal-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(168,85,247,0.1);
+}
+
+/* FOOTER */
+
+.footer-note {
+  font-size: 10px;
+  color: #9ca3af;
+  margin-top: 16px;
+  text-align: center;
+}
