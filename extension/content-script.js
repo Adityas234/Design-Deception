@@ -70,16 +70,20 @@ function runAnalysis() {
 
   const visual = runVisualEngine(acceptBtn, rejectBtn);
   const semantic = runSemanticEngine(acceptBtn, rejectBtn);
-  const effort = runEffortEngine(banner);
+  const effort = runEffortEngine(banner, acceptBtn, rejectBtn);
   const defaultBias = runDefaultEngine(banner);
   const pressure = runPressureEngine(banner);
+  const confirmshaming = runConfirmshamingEngine(banner);
+  const obstruction = runObstructionEngine(banner);
 
   const dpiResult = runDPIEngine({
     visual,
     semantic,
     effort,
     defaultBias,
-    pressure
+    pressure,
+    confirmshaming,
+    obstruction
   });
 
   chrome.runtime.sendMessage({

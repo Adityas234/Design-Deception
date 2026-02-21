@@ -1,6 +1,6 @@
-function runEffortEngine(banner) {
+function runEffortEngine(banner, acceptBtn, rejectBtn) {
 
-  if (!banner) {
+  if (!banner || !acceptBtn || !rejectBtn) {
     return {
       active: false,
       score: 0,
@@ -9,36 +9,51 @@ function runEffortEngine(banner) {
     };
   }
 
-  const buttons = banner.querySelectorAll("button, a");
+  let extraLayers = 0;
 
-  let acceptSteps = 1;
-  let rejectSteps = 1;
+  // Check if reject button opens another dialog
+  const rejectTarget =
+    rejectBtn.getAttribute("data-target") ||
+    rejectBtn.getAttribute("aria-controls");
 
-  buttons.forEach(btn => {
+  if (rejectTarget) {
+    const linkedElement = document.getElementById(rejectTarget);
+    if (linkedElement) extraLayers++;
+  }
 
-    const text = btn.innerText.toLowerCase();
+  // Check if reject button has modal-related attributes
+  const rejectTriggersModal =
+    rejectBtn.closest("[role='dialog']") !== banner ||
+    rejectBtn.hasAttribute("data-modal") ||
+    rejectBtn.className.toLowerCase().includes("settings");
 
-    if (/manage|settings|preferences/.test(text)) {
-      rejectSteps += 1;
-    }
+  if (rejectTriggersModal) extraLayers++;
 
-    if (/accept|agree|allow/.test(text)) {
-      acceptSteps = 1;
-    }
-  });
+  // Check nested modals inside banner
+  const nestedDialogs = banner.querySelectorAll("[role='dialog']");
+  if (nestedDialogs.length > 1) extraLayers++;
 
-  const effortGap = rejectSteps - acceptSteps;
+  // Compare with accept behavior
+  const acceptTriggersModal =
+    acceptBtn.getAttribute("data-target") ||
+    acceptBtn.getAttribute("aria-controls");
 
-  let score = effortGap > 0 ? 0.7 : 0;
+  if (!acceptTriggersModal && extraLayers > 0) {
+    // Clear asymmetry
+    extraLayers += 1;
+  }
+
+  let score = 0;
+
+  if (extraLayers >= 2) score = 0.8;
+  else if (extraLayers === 1) score = 0.6;
 
   return {
     active: score > 0.5,
     score,
     confidence: score,
     evidence: {
-      acceptSteps,
-      rejectSteps,
-      effortGap
+      extraLayersDetected: extraLayers
     }
   };
 }

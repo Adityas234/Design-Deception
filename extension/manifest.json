@@ -32,6 +32,8 @@
         "engines/defaultEngine.js",
         "engines/pressureEngine.js",
         "engines/dpiEngine.js",
+        "engines/confirmshamingEngine.js",
+        "engines/obstructionEngine.js",
         "content-script.js"
       ],
       "all_frames": true

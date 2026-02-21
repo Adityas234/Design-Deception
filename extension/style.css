@@ -173,3 +173,37 @@ body {
   margin-top: 16px;
   text-align: center;
 }
+
+.signal-row {
+  background: #1a102e;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.signal-title {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.signal-description {
+  font-size: 12px;
+  color: #a78bfa;
+  margin-top: 4px;
+}
+
+.active {
+  color: #f87171;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.inactive {
+  color: #34d399;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.advanced {
+  display: none;
+}

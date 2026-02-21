@@ -106,20 +106,48 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       ================================ */
 
       const breakdownEl = document.getElementById("breakdown");
-      breakdownEl.innerHTML = "";
+breakdownEl.innerHTML = "";
 
-      Object.entries(result.breakdown).forEach(([key, value]) => {
+Object.entries(result.breakdown).forEach(([key, value]) => {
 
-        const row = document.createElement("div");
-        row.className = "signal-row";
+  const row = document.createElement("div");
+  row.className = "signal-row";
 
-        row.innerHTML = `
-          <span>${key.toUpperCase()}</span>
-          <span>${value.active ? "ACTIVE" : "Inactive"}</span>
-        `;
+  const labelMap = {
+    visual: "Visual Imbalance",
+    semantic: "Wording Asymmetry",
+    effort: "Effort Imbalance",
+    defaultBias: "Pre-Enabled Consent",
+    pressure: "Urgency Pressure",
+    confirmshaming: "Emotional Coercion",
+    obstruction: "Interaction Blocking"
+  };
 
-        breakdownEl.appendChild(row);
-      });
+  const title = document.createElement("div");
+  title.className = "signal-title";
+  title.innerText = labelMap[key] || key;
+
+  const status = document.createElement("div");
+  status.className = value.active ? "active" : "inactive";
+  status.innerText = value.active ? "Detected" : "Not Detected";
+
+  const description = document.createElement("div");
+  description.className = "signal-description";
+
+  if (value.active) {
+    description.innerText =
+      "Confidence: " + Math.round(value.confidence * 100) + "%";
+  } else {
+    description.innerText =
+      "No significant evidence found.";
+  }
+
+  row.appendChild(title);
+  row.appendChild(status);
+  row.appendChild(description);
+
+  breakdownEl.appendChild(row);
+});
 
       /* ===============================
          CONFIDENCE
@@ -133,13 +161,18 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       ================================ */
 
       document.getElementById("toggleAdvanced")
-        .addEventListener("click", () => {
+  .addEventListener("click", () => {
 
-          const adv = document.getElementById("advanced");
+    const adv = document.getElementById("advanced");
 
-          adv.style.display =
-            adv.style.display === "none" ? "block" : "none";
-        });
+    const isHidden = window.getComputedStyle(adv).display === "none";
+
+    if (isHidden) {
+      adv.style.display = "block";
+    } else {
+      adv.style.display = "none";
+    }
+});
 
       /* ===============================
          IGNORE SITE

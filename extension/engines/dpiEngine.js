@@ -5,7 +5,9 @@ function runDPIEngine(signals) {
     semantic: 0.25,
     effort: 0.20,
     defaultBias: 0.15,
-    pressure: 0.10
+    pressure: 0.10,
+    confirmshaming: 0.10,
+    obstruction: 0.10
   };
 
   // Count strictly active signals
@@ -115,6 +117,12 @@ function generateIssues(signals) {
 
   if (signals.pressure?.active)
     issues.push("Urgency or pressure language is used.");
+
+  if (signals.confirmshaming?.active)
+  issues.push("The rejection option uses guilt or shame-based wording.");
+
+  if (signals.obstruction?.active)
+  issues.push("The page blocks interaction until a choice is made.");
 
   return issues;
 }
